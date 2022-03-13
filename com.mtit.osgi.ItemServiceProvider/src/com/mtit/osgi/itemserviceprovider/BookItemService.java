@@ -45,6 +45,12 @@ public interface BookItemService {
  	
  	public boolean editBookPrice(int index, double price);
  	
+	
+	public boolean editBookCategory(int index, String category);
+	
+	
+	public boolean editBookDesc(int index, String desc); 
+ 	
  	
 }
 

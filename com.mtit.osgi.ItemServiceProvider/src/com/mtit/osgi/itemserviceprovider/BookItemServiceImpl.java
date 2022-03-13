@@ -131,5 +131,15 @@ public class BookItemServiceImpl implements BookItemService{
 		items.get(index).setbPrice(price);
 		return true;
 	}
+	
+	public boolean editBookCategory(int index, String category) {
+		items.get(index).setbCategory(category);
+		return true;
+	}
+	
+	public boolean editBookDesc(int index, String desc) {
+		items.get(index).setbDesc(desc);;
+		return true;
+	}
 
 }
