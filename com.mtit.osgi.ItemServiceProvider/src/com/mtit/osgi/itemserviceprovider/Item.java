@@ -4,12 +4,12 @@ public class Item {
      private String bName;
      private String bDesc; 
 	 private double bQty;
-	 private double bCategory;
+	 private String bCategory;
      private double bPrice;
      
     
  
-	public Item(String bName, String bDesc, double bQty, double bCategory, double bPrice) {
+	public Item(String bName, String bDesc, double bQty, String bCategory, double bPrice) {
 		super();
 		this.bName = bName;
 		this.bDesc = bDesc;
@@ -56,13 +56,13 @@ public class Item {
 
 
 
-	public double getbCategory() {
+	public String getbCategory() {
 		return bCategory;
 	}
 
 
 
-	public void setbCategory(double bCategory) {
+	public void setbCategory(String bCategory) {
 		this.bCategory = bCategory;
 	}
 

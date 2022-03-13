@@ -10,7 +10,7 @@ public interface BookItemService {
  	public int testBookItem(String name);
  	
  	
- 	public String displayBooksDetail(int index);
+ 	public String displayBookDetail(int index);
  	
  	
  	public String displayAllItems();
