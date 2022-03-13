@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ItemServiceProvider
+Bundle-SymbolicName: com.mtit.osgi.ItemServiceProvider
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.mtit.osgi.itemserviceprovider.Activator
+Bundle-Vendor: MTIT
+Bundle-RequiredExecutionEnvironment: JavaSE-17
+Import-Package: org.osgi.framework;version="1.3.0"
+Export-Package: com.mtit.osgi.itemserviceprovider

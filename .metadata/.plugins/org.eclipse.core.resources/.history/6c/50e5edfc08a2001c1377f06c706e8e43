@@ -1,0 +1,17 @@
+package com.mtit.osgi.merchantserviceconsumer;
+
+import org.osgi.framework.BundleActivator;
+import org.osgi.framework.BundleContext;
+
+public class Activator implements BundleActivator {
+
+	
+	public void start(BundleContext Context) throws Exception {
+		
+	}
+
+	public void stop(BundleContext Context) throws Exception {
+		
+	}
+
+}
