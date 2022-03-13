@@ -13,8 +13,8 @@ public class BookItemServiceImpl implements BookItemService{
 	
 	private List<Item> items = new ArrayList<Item>() {
 		{
-			add(new Item("A","A is a Story books",12,"Story Book", 150.00));
-			add(new Item("A","A is a Story books",12,"Story Book", 150.00));
+			add(new Item("CR-80","Normal",15,"Story Book", 100.00));
+			add(new Item("CR-160","Double Rool",10,"Story Book", 190.00));
 			
 		}
 	};
@@ -51,8 +51,8 @@ public class BookItemServiceImpl implements BookItemService{
 		if (items.size() > 0) {
 			int bCount = 1;
 			for (Item i : items) {
-				itemsDetails += bCount + " " + i.getbName() + "\t" + i.getbQty() + "\t" + "Rs. "
-						+ i.getbPrice() + "/" + "\n";
+				itemsDetails += bCount + "    " + i.getbName() + "\t" + i.getbQty() + "\t" + "Rs."
+						+ i.getbPrice() +"\t"+ i.getbCategory() + "\t" + i.getbDesc()+ "\n";
 				bCount++;
 			}
 		} else {

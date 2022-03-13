@@ -25,7 +25,6 @@ public class Item {
 	}
 
 
-
 	public void setbName(String bName) {
 		this.bName = bName;
 	}

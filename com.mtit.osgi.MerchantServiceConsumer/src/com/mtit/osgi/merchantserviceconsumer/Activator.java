@@ -32,7 +32,7 @@ public class Activator implements BundleActivator {
 			
 			System.out.println("\n" + "WELCOME IMASHA");
 			System.out.println("\n" + "----- MERCHANT PORTAL -----");
-			System.out.println("2) DISPLAY all BOOK ITEMS");
+			System.out.println("1) DISPLAY all BOOK ITEMS");
 			System.out.println("3) INSERT BOOK ITEM ");
 			System.out.println("4) DELETE A BOOK ITEM");
 			System.out.println("5) UPDATE A BOOK ITEM");
@@ -40,7 +40,7 @@ public class Activator implements BundleActivator {
 
 			while (true) {
 				try {
-					System.out.print("Please enter the value : ");
+					System.out.print("\nPlease enter the value : ");
 					nValue = sc.nextInt();
 					
 					if (nValue > 0 && nValue <= 6) {
@@ -49,7 +49,7 @@ public class Activator implements BundleActivator {
 					System.out.println("Check the enter value. Please again enter a valid input");
 					
 				} catch (InputMismatchException e) {
-					System.out.println("Check the enter value. Please again enter a valid input");
+					System.out.println("Please again enter a valid input");
 					sc.next();
 				}
 			}
@@ -66,15 +66,15 @@ public class Activator implements BundleActivator {
 				while (true) {
 					try {
 						
-						System.out.print("Enter Book Item description : \"");
-						iDesc = sc.next();
+						System.out.print("Enter Book Item description :  ");
+						iDesc = sc.nextLine();
 						if (iDesc.length() > 0) {
 							break;
 						} else {
 							System.out.println("Check the enter value. Please again enter a valid input");
 						}						
 					} catch (InputMismatchException e) {
-						System.out.println("Check the enter value. Please again enter a valid input");
+						System.out.println("Please again enter a valid input");
 						sc.next();
 					}
 				}
@@ -82,7 +82,7 @@ public class Activator implements BundleActivator {
 				while (true) {
 					try {
 						
-						System.out.print("Enter Book Item quantity in(as a no) : \"");
+						System.out.print("Enter Book Item quantity  (as a no) : ");
 						iQty = sc.nextInt();
 						if (iQty > 0) {
 							break;
@@ -90,7 +90,7 @@ public class Activator implements BundleActivator {
 							System.out.println("Check the enter value. Please again enter a valid input");
 						}						
 					} catch (InputMismatchException e) {
-						System.out.println("Check the enter value. Please again enter a valid input");
+						System.out.println("Please again enter a valid input");
 						sc.next();
 					}
 				}
@@ -98,7 +98,7 @@ public class Activator implements BundleActivator {
 				while (true) {
 					try {
 						
-						System.out.print("Enter Book Item Category : \"");
+						System.out.print("Enter Book Item Category :  ");
 						iCategory = sc.next();
 						if (iCategory.length() > 0) {
 							break;
@@ -106,29 +106,29 @@ public class Activator implements BundleActivator {
 							System.out.println("Check the enter value. Please again enter a valid input");
 						}						
 					} catch (InputMismatchException e) {
-						System.out.println("Check the enter value. Please again enter a valid input");
+						System.out.println("Please again enter a valid input");
 						sc.next();
 					}
 				}
 				
 				while (true) {
 					try {
-						System.out.print("Enter the unit price for one item: ");
+						System.out.print("Enter the unit price for one item:   ");
 						price = sc.nextDouble();
 						if (price > 0) {
 							break;
 						} else {
-							System.out.println("Check the enter value. Please again enter a valid input");
+							System.out.println("Check the enter value. Please again enter a valid input ");
 						}
 						
 					} catch (Exception e) {
-						System.out.println("Check the enter value. Please again enter a valid input");
+						System.out.println("Please again enter a valid input");
 						sc.next();
 					}
 				}
 				
 				if (bookItemService.addBookItem(new Item(iName, iDesc, iQty, iCategory, price))) {
-					System.out.println("Book item Adding Successfully.");
+					System.out.println("\n----------- Book item Adding Successfully ---------------");
 				} else {
 					System.out.println("Book item Adding not Successfully.Please try again.");
 				}
@@ -174,7 +174,7 @@ public class Activator implements BundleActivator {
 					
 					while (true) {
 						try {
-							System.out.print("\n Enter Book item name");
+							System.out.print("\nEnter Book item code :");
 							itemIndex = sc.nextInt();
 
 							
@@ -197,7 +197,7 @@ public class Activator implements BundleActivator {
 
 					
 					while (true) {
-						System.out.print("Do you want to edit " + bookItemService.getBookItemName(itemIndex) + " ? (y/n) : ");
+						System.out.print("Do you want to edit " + bookItemService.getBookItemName(itemIndex) + " ? (y/n) : \n");
 						accept = sc.next();
 						if (accept.equals("y") || accept.equals("n")) {
 							break;
@@ -209,7 +209,7 @@ public class Activator implements BundleActivator {
 
 						
 						System.out.println(".............Under the below Update option.............\n");
-						System.out.println("1) Update book item     : ");
+						System.out.println("1) Update book item name    : ");
 						System.out.println("2) Update book desc     : ");
 						System.out.println("3) Update book qty      : ");
 						System.out.println("4) Update book category : ");
@@ -217,7 +217,7 @@ public class Activator implements BundleActivator {
 						
 						while (true) {
 							try {
-								System.out.print("Enter the value : ");
+								System.out.print("\nEnter the value : ");
 								eAnswer = sc.nextInt();
 
 								
@@ -332,7 +332,7 @@ public class Activator implements BundleActivator {
 						
 
 						while (true) {
-							System.out.print("Do you want to update another book item?. ");
+							System.out.print("Do you want to update another book item?.(y/n) ");
 							answer = sc.next();
 							if (answer.equals("y") || answer.equals("n")) {
 								break;
