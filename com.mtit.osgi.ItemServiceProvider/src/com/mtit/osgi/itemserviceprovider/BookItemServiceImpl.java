@@ -45,7 +45,7 @@ public class BookItemServiceImpl implements BookItemService{
 	}
 
 	@Override
-	public String displayAllItems() {
+	public String displayAllBookItems() {
 		String itemsDetails = "";
 		
 		if (items.size() > 0) {
@@ -63,63 +63,73 @@ public class BookItemServiceImpl implements BookItemService{
 	}
 
 	@Override
-	public double getQty(int index) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getQty(int i) {
+		
+		return items.get(i).getbQty();
+		
 	}
 
 	@Override
-	public boolean reduceQty(List<Item> orderedProducts) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean decreaseQty(List<Item> checkoutBooksDecrease) {
+		
+				for (Item item : items) {
+					
+					for (Item reduceItem : checkoutBooksDecrease) {
+						
+						if (reduceItem.getbName().toLowerCase().equals(reduceItem.getbName().toLowerCase())) {
+							
+							item.setbQty( item.getbQty() - reduceItem.getbQty());
+						}
+					}
+				}
+
+				return true;
 	}
 
 	@Override
-	public double getPrice(int index) {
-		// TODO Auto-generated method stub
-		return 0;
+	public double getBookPrice(int index) {
+		return items.get(index).getbPrice();
+		
 	}
 
 	@Override
-	public boolean addItem(Item p) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean addBookItem(Item item) {
+		items.add(item);
+		return true;
 	}
 
 	@Override
-	public boolean deleteItem(int index) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteBookItem(int i) {
+		items.remove(i);
+		return true;
 	}
 
 	@Override
-	public int getItemCount() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int getBookItemCount() {
+		return items.size();
 	}
 
 	@Override
-	public String getItemName(int index) {
-		// TODO Auto-generated method stub
-		return null;
+	public String getBookItemName(int index) {
+		return items.get(index).getbName();
 	}
 
 	@Override
-	public boolean editName(int index, String name) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean editBookName(int index, String name) {
+		items.get(index).setbName(name);
+		return true;
 	}
 
 	@Override
-	public boolean editQty(int index, double qty) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean editBookQty(int index, double qty) {
+		items.get(index).setbQty(qty);
+		return true;
 	}
 
 	@Override
-	public boolean editPrice(int index, double price) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean editBookPrice(int index, double price) {
+		items.get(index).setbPrice(price);
+		return true;
 	}
 
 }
