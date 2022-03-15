@@ -1,5 +1,0 @@
-package com.mtit.osgi.itemserviceprovider;
-
-public interface BookItemService {
-
-}
