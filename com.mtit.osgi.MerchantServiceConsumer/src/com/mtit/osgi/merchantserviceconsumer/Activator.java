@@ -11,7 +11,7 @@ import com.mtit.osgi.itemserviceprovider.BookItemService;
 import com.mtit.osgi.itemserviceprovider.Item;
 
 public class Activator implements BundleActivator {
-
+    
 	ServiceReference serviceReferenceItem;
 	
 	
