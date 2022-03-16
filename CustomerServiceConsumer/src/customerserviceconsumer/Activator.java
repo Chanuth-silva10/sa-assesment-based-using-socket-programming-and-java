@@ -17,8 +17,8 @@ public class Activator implements BundleActivator {
 		// Get a reference of the Cart Service
 		serviceReferAddToCart = context.getServiceReference(CartService.class.getName());
 		cartService = (CartService) context.getService(serviceReferAddToCart);
-
-		
+        
+		//------------
 
 		int index = 0;
 		int option;
