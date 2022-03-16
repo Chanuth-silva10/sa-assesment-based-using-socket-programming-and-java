@@ -16,7 +16,7 @@ public class AddToCartServiceImpl implements AddToCartService {
 
 	// List to store the products in the cart
 	private List<Item> cart = new ArrayList<>();
-
+    
 	
 	@Override
 	public boolean addtoCart(String bName, String bDesc, double bQty, String bCategory, double bPrice,double availQty) {
