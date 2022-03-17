@@ -9,10 +9,13 @@ import org.osgi.framework.ServiceReference;
 
 import com.mtit.osgi.itemserviceprovider.BookItemService;
 import com.mtit.osgi.itemserviceprovider.Item;
+import com.mtit.osgi.orderservicepublisher.OrderService;
+
 
 public class Activator implements BundleActivator {
     
 	ServiceReference serviceReferenceItem;
+	ServiceReference serviceReferenceOrder;
 	
 	
 	public void start(BundleContext Context) throws Exception {
@@ -20,7 +23,9 @@ public class Activator implements BundleActivator {
 		serviceReferenceItem = Context.getServiceReference(BookItemService.class.getName());
 		BookItemService bookItemService = (BookItemService)Context.getService(serviceReferenceItem);
 		
-		System.out.println(bookItemService.publishBooks());
+		serviceReferenceOrder = Context.getServiceReference(BookItemService.class.getName());
+		OrderService orderService = (OrderService)Context.getService(serviceReferenceOrder);
+		
 		
 		int nValue, iQty, itemIndex, eAnswer;
 		String iName, iDesc, iCategory, dBookItem, answer, accept;
@@ -33,6 +38,7 @@ public class Activator implements BundleActivator {
 			System.out.println("\n" + "WELCOME IMASHA");
 			System.out.println("\n" + "----- MERCHANT PORTAL -----");
 			System.out.println("1) DISPLAY all BOOK ITEMS");
+			System.out.println("2) DISPLAY all CUSTOMER ORDER");
 			System.out.println("3) INSERT BOOK ITEM ");
 			System.out.println("4) DELETE A BOOK ITEM");
 			System.out.println("5) UPDATE A BOOK ITEM");
@@ -57,7 +63,7 @@ public class Activator implements BundleActivator {
 			if (nValue == 1) {
 				System.out.println(bookItemService.displayAllBookItems());
 			} else if (nValue == 2) {
-				
+				System.out.println(orderService.displayCustomerOrders());
 			} else if (nValue == 3) {			
 				System.out.print("Enter the new book item : ");
 				sc.nextLine();
