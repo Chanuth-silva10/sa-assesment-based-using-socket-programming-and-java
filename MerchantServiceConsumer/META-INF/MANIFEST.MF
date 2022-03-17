@@ -6,7 +6,7 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.mtit.osgi.merchantserviceconsumer.Activator
 Bundle-Vendor: MTIT
 Bundle-RequiredExecutionEnvironment: JavaSE-17
-Import-Package: addtocartserviceprovider,
+Import-Package: com.mtit.osgi.addtocartserviceprovider,
  com.mtit.osgi.itemserviceprovider,
  org.osgi.framework;version="1.3.0"
 

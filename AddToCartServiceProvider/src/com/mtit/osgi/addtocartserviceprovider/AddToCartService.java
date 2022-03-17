@@ -1,4 +1,4 @@
-package addtocartserviceprovider;
+package com.mtit.osgi.addtocartserviceprovider;
 
 import java.util.List;
 

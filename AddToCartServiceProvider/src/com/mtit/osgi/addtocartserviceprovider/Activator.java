@@ -1,4 +1,4 @@
-package addtocartserviceprovider;
+package com.mtit.osgi.addtocartserviceprovider;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;

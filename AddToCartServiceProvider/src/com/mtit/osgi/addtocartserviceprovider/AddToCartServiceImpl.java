@@ -1,4 +1,4 @@
-package addtocartserviceprovider;
+package com.mtit.osgi.addtocartserviceprovider;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class AddToCartServiceImpl implements AddToCartService {
 
 	// List to store the products in the cart
 	private List<Item> cart = new ArrayList<>();
-dddddddddddddddddddd
+
 	
 	@Override
 	public boolean addtoCart(String bName, String bDesc, double bQty, String bCategory, double bPrice,double availQty) {
