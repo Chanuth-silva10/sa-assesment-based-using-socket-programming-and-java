@@ -23,7 +23,7 @@ public class Activator implements BundleActivator {
 		serviceReferenceItem = Context.getServiceReference(BookItemService.class.getName());
 		BookItemService bookItemService = (BookItemService)Context.getService(serviceReferenceItem);
 		
-		serviceReferenceOrder = Context.getServiceReference(BookItemService.class.getName());
+		serviceReferenceOrder = Context.getServiceReference(OrderService.class.getName());
 		OrderService orderService = (OrderService)Context.getService(serviceReferenceOrder);
 		
 		
