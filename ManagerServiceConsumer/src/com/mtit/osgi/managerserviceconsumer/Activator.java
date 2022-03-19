@@ -35,13 +35,14 @@ public class Activator implements BundleActivator {
 		
 		do {
 			
-			System.out.println("\n" + "WELCOME Hasitha");
+			System.out.println("\n" + "....... WELCOME Hasitha ........");
 			System.out.println("\n" + "----- Employee Management Portal -----");
 			System.out.println("1) DISPLAY all Employees");
 			System.out.println("2) ADDING Employee ");
 			System.out.println("3) DELETE Employee");
 			System.out.println("4) UPDATE Employee");
 			System.out.println("5) EXIT THE MENU");
+
 
 			while (true) {
 				try {
