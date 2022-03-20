@@ -304,11 +304,11 @@ public class Activator implements BundleActivator {
 		double availQty;
 		double price;
 
-		// Gets the name of the product from the Product Service
+		
 		String name = productService.getBookItemName(index);
-		// Gets the available quantity of the product from the Product Service
+		
 		availQty = productService.getQty(index);
-		// Gets the price of the product from the Product Service
+		
 		price = productService.getBookPrice(index);
 
 		while (true) {

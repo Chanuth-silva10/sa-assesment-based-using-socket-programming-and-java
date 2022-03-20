@@ -21,27 +21,27 @@ public class EmployeeServiceImpl implements EmployeeService{
 
 	@Override
 	public int searchEmployee(String eName) {
-        int bCount = 0;
+        int eCount = 0;
 		
 		for (Employee emp : employees) {
 			
 			if (emp.geteName().toLowerCase().equals(eName.toLowerCase())) {
-				return bCount;
+				return eCount;
 			}
-			bCount++;
+			eCount++;
 		}
 		
-		bCount = -1;
-		return bCount;
+		eCount = -1;
+		return eCount;
 	}
 
 	@Override
 	public String displayBookDetail(int index) {
-		return "Employee Name : " + employees.get(index).geteName() + 
-				", Employee Desination : " + employees.get(index).getEdesination() +
-				",Employee Age : "  + employees.get(index).geteAge() + 
-				"Employee Salary : "+ employees.get(index).geteSalary() +
-				 ".........." ;
+		return  "   Employee ID : " + index + 1 + "\n"+
+				"   Employee Name : " + employees.get(index).geteName() + "\n"+
+				"   Employee Desination : " + employees.get(index).getEdesination() + "\n"+
+				"   Employee Age : "  + employees.get(index).geteAge() + "\n"+
+				"   Employee Salary : "+ employees.get(index).geteSalary() + "\n" ;
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		if (employees.size() > 0) {
 			int bCount = 1;
 			for (Employee e : employees) {
-				employeeDetails += bCount + "    " + e.geteName() + "\t" + e.getEdesination() + "\t" + "Rs."
+				employeeDetails += bCount + "    " + e.geteName() + "\t" + e.getEdesination() + "\t\t" + "Rs."
 						+ e.geteSalary() +"\t"+ e.geteAge() +  "\n";
 				bCount++;
 			}
@@ -73,6 +73,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return true;
 	}
 
+
 	@Override
 	public boolean deleteBookItem(int i) {
 		employees.remove(i);
@@ -87,6 +88,18 @@ public class EmployeeServiceImpl implements EmployeeService{
 	@Override
 	public String getEmployeeName(int index) {
 		return employees.get(index).geteName();
+	}
+	
+	public String getEmployeeDesignation(int index) {
+		return employees.get(index).getEdesination();
+	}
+	
+	public double getEmployeeSalary(int index) {
+		return employees.get(index).geteSalary();
+	}
+	
+	public int getEmployeAge(int index) {
+		return employees.get(index).geteAge();
 	}
 
 	@Override

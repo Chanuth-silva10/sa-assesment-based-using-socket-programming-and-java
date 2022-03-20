@@ -22,13 +22,19 @@ public interface EmployeeService {
 	 	
 	 	
 	 public boolean deleteBookItem(int index);
-	 	
-	 	
-	 public int getEmployeeCount();
 
 	 	
 	 public String getEmployeeName(int index);
-	 	
+	 
+	 
+	 public String getEmployeeDesignation(int index);
+	 
+		
+	 public double getEmployeeSalary(int index);
+	 
+		
+	 public int getEmployeAge(int index);
+	 
 	 	
 	 public boolean editEmployeeName(int index, String ename);
 	 	
@@ -40,4 +46,7 @@ public interface EmployeeService {
 	 			
 		
 	 public boolean editEmployeeDesination(int index, String desc); 
+	 
+	 
+	 public int getEmployeeCount();
 }

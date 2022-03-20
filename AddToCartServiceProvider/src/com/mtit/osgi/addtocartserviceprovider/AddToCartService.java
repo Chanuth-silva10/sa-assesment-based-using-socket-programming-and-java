@@ -5,7 +5,7 @@ import java.util.List;
 public interface AddToCartService {
 	
 	
-public boolean addtoCart(String bName, String bDesc, double bQty, String bCategory, double bPrice, double availQty);
+    public boolean addtoCart(String bName, String bDesc, double bQty, String bCategory, double bPrice, double availQty);
 	
 	
 	public List getCart();

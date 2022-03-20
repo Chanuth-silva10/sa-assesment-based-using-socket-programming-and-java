@@ -13,8 +13,9 @@ public class BookItemServiceImpl implements BookItemService{
 	
 	private List<Item> items = new ArrayList<Item>() {
 		{
-			add(new Item("CR-80","Normal",15,"Story Book", 100.00));
-			add(new Item("CR-160","Double Rool",10,"Story Book", 190.00));
+			add(new Item("CR-80","Normal Book ",15,"Story Book", 100.00));
+			add(new Item("CR-160","Double Rool",10,"Normal Book", 190.00));
+			add(new Item("HathPana","Mahagama Sekear",10,"Story Book", 190.00));
 			
 		}
 	};
