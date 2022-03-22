@@ -6,32 +6,33 @@ import java.util.List;
 
 import com.mtit.osgi.itemserviceprovider.Item;
 
-public class Order {
+public class CusOrder {
 
 	
-	private static int NUM = 1;
-	private int orderNo;
-	private Customer cus;
+	private static int NO = 1;
+	private int CusOrderNo;
+	private Customer customer;
 	private double total;
+	
 	private List<Item> Items;
 	
 	
-	public Order(List<Item> Items, Customer cus, double total) {
+	public CusOrder(List<Item> Items, Customer cus, double total) {
 		super();
-		this.orderNo = NUM++;
+		this.CusOrderNo = NO++;
 		this.Items = Items;
-		this.cus = cus;
+		this.customer = cus;
 		this.total = total;
 	}
 
 	
 	public int getOrderNo() {
-		return orderNo;
+		return CusOrderNo;
 	}
 
 	
 	public void setOrderNo(int orderNo) {
-		this.orderNo = orderNo;
+		this.CusOrderNo = orderNo;
 	}
 
 	
@@ -46,12 +47,12 @@ public class Order {
 
 	
 	public Customer getCus() {
-		return cus;
+		return customer;
 	}
 
 	
 	public void setCus(Customer cus) {
-		this.cus = cus;
+		this.customer = cus;
 	}
 
 	

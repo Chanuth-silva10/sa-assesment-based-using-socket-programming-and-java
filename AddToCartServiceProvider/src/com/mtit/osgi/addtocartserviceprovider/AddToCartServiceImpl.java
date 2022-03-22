@@ -11,25 +11,23 @@ public class AddToCartServiceImpl implements AddToCartService {
 	private static final String CARTSUMMARY = "***** Cart Summary *****";
 	private static final String TOTAL = "Total : ";
 	private static final String CARTEMPTY = "Cart is empty";
-	private static final String CURRENCY = "Rs.";
-	private static final String WEIGHT = "kg";
+	private static final String RS = "Rs.";
 
-	// List to store the products in the cart
 	private List<Item> cart = new ArrayList<>();
 
 	
 	@Override
-	public boolean addtoCart(String bName, String bDesc, double bQty, String bCategory, double bPrice,double availQty) {
+	public boolean addtoCart(String bName, String bDesc, double bQty, String bCategory, double bPrice,double availBookQty) {
 
 		
-		int index = checkCart(bName);
+		int index = checkAddToCart(bName);
 
 		if (index == -1) {
 			cart.add(new Item(bName, bDesc, bQty, bCategory, bPrice));
 		} else {
 			double newQty = cart.get(index).getbQty() + bQty;
 
-			if (newQty <= availQty) {
+			if (newQty <= availBookQty) {
 				cart.get(index).setbQty(newQty);
 			} else {
 				return false;
@@ -56,66 +54,61 @@ public class AddToCartServiceImpl implements AddToCartService {
 		return sum;
 	}
 
-	/**
-	 * Prints the details of the products in the cart
-	 * 
-	 * @return a String containing the details of the products in the cart
-	 *
-	 */
+	
 	@Override
-	public String printCartSummary() {
+	public String printCartDetails() {
 
-		int count = 1;
-		String summary = "";
+		int c = 1;
+		String details = "";
 		if (cart.size() != 0) {
-			summary += CARTSUMMARY + "\n";
+			details += CARTSUMMARY + "\n";
 
 			for (Item i : cart) {
-				summary += count + ") " + i.getbName() + " " + i.getbQty() +"\t" + CURRENCY
+				details += c + ") " + i.getbName() + " " + i.getbQty() +"\t" + RS
 						+ (i.getbPrice() * i.getbQty()) + "\n";
-				count++;
+				c++;
 			}
-			summary += "\n" + TOTAL + CURRENCY + getCartTotal() + "\n";
+			details += "\n" + TOTAL + RS + getCartTotal() + "\n";
 
 		} else {
-			summary += CARTEMPTY;
+			details += CARTEMPTY;
 		}
-		return summary;
+		return details;
 	}
 
 	
 	@Override
-	public int getCartCount() {
+	public int getAddToCartCount() {
 		return cart.size();
 	}
 
 	
 	@Override
-	public boolean removeProduct(int index) {
+	public boolean removeBookItem(int index) {
 		cart.remove(index);
 		return true;
 	}
 
 	
 	@Override
-	public boolean clearCart() {
+	public boolean clearAddToCart() {
 		cart.clear();
 		return true;
 	}
 
 	
 	@Override
-	public String getProductName(int index) {
+	public String getBookIteName(int index) {
 		return cart.get(index).getbName();
 	}
 
 	
 	@Override
-	public int checkCart(String name) {
+	public int checkAddToCart(String bName) {
 
 		int count = 0;
 		for (Item i : cart) {
-			if (i.getbName().toLowerCase().equals(name.toLowerCase())) {
+			if (i.getbName().toLowerCase().equals(bName.toLowerCase())) {
 				return count;
 			}
 			count++;

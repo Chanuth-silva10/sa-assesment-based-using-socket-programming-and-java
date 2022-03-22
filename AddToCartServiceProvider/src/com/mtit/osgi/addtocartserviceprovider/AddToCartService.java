@@ -14,20 +14,20 @@ public interface AddToCartService {
 	public double getCartTotal();
 	
 	
-	public String printCartSummary();
+	public String printCartDetails();
 
 	
-	public int getCartCount();
+	public int getAddToCartCount();
 	
 	
-	public boolean removeProduct(int index);
+	public boolean removeBookItem(int index);
 	
 	
-	public boolean clearCart();
+	public boolean clearAddToCart();
 	
 	
-	public String getProductName(int index);
+	public String getBookIteName(int index);
 	
 	
-	public int checkCart(String name);
+	public int checkAddToCart(String name);
 }

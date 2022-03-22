@@ -116,7 +116,7 @@ public class Activator implements BundleActivator {
 					}
 				}
 				
-				if (employeeService.addBookItem(new Employee(eName, eDesination, eAge, eSalary))) {
+				if (employeeService.addEmployee(new Employee(eName, eDesination, eAge, eSalary))) {
 					System.out.println("\n----------- Employee Adding Successfully ---------------");
 				} else {
 					System.out.println("Book item Adding not Successfully.Please try again.");
@@ -145,7 +145,7 @@ public class Activator implements BundleActivator {
 					
 					if (answer.equals("y")) {
 						
-						if (employeeService.deleteBookItem(empNo)) {
+						if (employeeService.deleteEmployee(empNo)) {
 							System.out.println( employeeName + "   Employee delete successfully");
 						} else {
 							System.out.println("Employee delete unSuccessfully");

@@ -6,18 +6,18 @@ import org.osgi.framework.ServiceRegistration;
 
 public class Activator implements BundleActivator {
 
-	ServiceRegistration orderServiceRegistration;
+	ServiceRegistration CusOrderServiceRegistration;
 
 	public void start(BundleContext context) throws Exception {
 		System.out.println("Order Service Starts");
-		OrderService orderService = new OrderServiceImpl();
-		orderServiceRegistration = context.registerService(OrderService.class.getName(), orderService, null);
+		CusOrderService orderService = new CusOrderServiceImpl();
+		CusOrderServiceRegistration = context.registerService(CusOrderService.class.getName(), orderService, null);
 	}
 
 	public void stop(BundleContext bundleContext) throws Exception {
 		
 		System.out.println("Thank You! for using Order Service");
-		orderServiceRegistration.unregister();
+		CusOrderServiceRegistration.unregister();
 	}
 
 }

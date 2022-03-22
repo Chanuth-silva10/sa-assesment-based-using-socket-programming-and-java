@@ -16,27 +16,28 @@ import com.mtit.osgi.itemserviceprovider.BookItemService;
 
 public class Activator implements BundleActivator {
 	
-	ServiceReference serviceReferenceProduct;
-	ServiceReference serviceReferenceCart;
+	ServiceReference serviceReferenceBookItem;
+	ServiceReference serviceReferenceAddToCart;
 	ServiceReference serviceReferenceOrder;
-	BookItemService productService;
-	AddToCartService cartService;
-	OrderService orderService;
+	BookItemService BookItemService;
+	AddToCartService addToCartService;
+	CusOrderService CusOrderService;
+	
 	Scanner sc = new Scanner(System.in);
-
+    
 
 	public void start(BundleContext context) throws Exception {
 		
-		System.out.println(Strings.WELCOME);
+		System.out.println(Constant.WELCOME);
 		
-		serviceReferenceProduct = context.getServiceReference(BookItemService.class.getName());
-		productService = (BookItemService) context.getService(serviceReferenceProduct);
+		serviceReferenceBookItem = context.getServiceReference(BookItemService.class.getName());
+		BookItemService = (BookItemService) context.getService(serviceReferenceBookItem);
 
-		serviceReferenceCart = context.getServiceReference(AddToCartService.class.getName());
-		cartService = (AddToCartService) context.getService(serviceReferenceCart);
+		serviceReferenceAddToCart = context.getServiceReference(AddToCartService.class.getName());
+		addToCartService = (AddToCartService) context.getService(serviceReferenceAddToCart);
 
-		serviceReferenceOrder = context.getServiceReference(OrderService.class.getName());
-		orderService = (OrderService) context.getService(serviceReferenceOrder);
+		serviceReferenceOrder = context.getServiceReference(CusOrderService.class.getName());
+		CusOrderService = (CusOrderService) context.getService(serviceReferenceOrder);
 
 		int index = 0;
 		int option;
@@ -45,24 +46,24 @@ public class Activator implements BundleActivator {
 
 				do {
 					
-					System.out.println("\n" + Strings.MAINMENU);
-					System.out.println("\n" + Strings.OPTION1);
-					System.out.println(Strings.OPTION2);
-					System.out.println(Strings.OPTION3);
-					System.out.println(Strings.OPTION4);
-					System.out.println(Strings.OPTION5);
-					System.out.println(Strings.OPTION6);
-					System.out.println(Strings.OPTION7);
+					System.out.println("\n" + Constant.MAINMENU);
+					System.out.println("\n" + Constant.OPTION1);
+					System.out.println(Constant.OPTION2);
+					System.out.println(Constant.OPTION3);
+					System.out.println(Constant.OPTION4);
+					System.out.println(Constant.OPTION5);
+					System.out.println(Constant.OPTION6);
+					System.out.println(Constant.OPTION7);
 
 					
 					while (true) {
 						try {
-							System.out.print("\n" + Strings.SELECTOPTION);
+							System.out.print("\n" + Constant.SELECTOPTION);
 							option = sc.nextInt();
 							break;
 							
 						} catch (InputMismatchException e) {
-							System.out.println(Strings.INVALIDOPTION);
+							System.out.println(Constant.INVALIDOPTION);
 							sc.next();
 						}
 					}
@@ -72,26 +73,26 @@ public class Activator implements BundleActivator {
 
 					
 					case 1:
-						System.out.println("\n" + Strings.ALLPRODUCTS);
-						System.out.println(productService.displayAllBookItems());
-						System.out.println(Strings.ENTEROPTIONNUM);
+						System.out.println("\n" + Constant.ALLPRODUCTS);
+						System.out.println(BookItemService.displayAllBookItems());
+						System.out.println(Constant.ENTEROPTIONNUM);
 
 					
 						while (true) {
 							
 							while (true) {
 								try {
-									System.out.print("\n" + Strings.ENTERPNUM);
+									System.out.print("\n" + Constant.ENTERPNUM);
 									index = sc.nextInt();
 									
-									if (index < 0 || index > productService.getBookItemCount()) {
-										System.out.println(Strings.INVALIDOPTION);
+									if (index < 0 || index > BookItemService.getBookItemCount()) {
+										System.out.println(Constant.INVALIDOPTION);
 									} else {
 										break;
 									}
 									
 								} catch (InputMismatchException e) {
-									System.out.println(Strings.INVALIDOPTION);
+									System.out.println(Constant.INVALIDOPTION);
 									sc.next();
 								}
 							}
@@ -104,16 +105,16 @@ public class Activator implements BundleActivator {
 							addtoCart(index);
 							
 							while (true) {
-								System.out.print(Strings.ADDMORE);
+								System.out.print(Constant.ADDMORE);
 								input = sc.next().toLowerCase();
 								
-								if (input.equals(Strings.YES) || input.equals(Strings.NO)) {
+								if (input.equals(Constant.YES) || input.equals(Constant.NO)) {
 									break;
 								} else {
-									System.out.println(Strings.INVALIDOPTION);
+									System.out.println(Constant.INVALIDOPTION);
 								}
 							}
-							if(input.equals(Strings.NO)) {
+							if(input.equals(Constant.NO)) {
 								break;
 							}
 
@@ -123,56 +124,56 @@ public class Activator implements BundleActivator {
 					case 2:
 						
 						do {
-							System.out.println(Strings.SEARCHPRODUCT);
+							System.out.println(Constant.SEARCHPRODUCT);
 							name = sc.next();
 							if (name.equals("0")) {
 								break;
 							}
-							index = productService.testBookItem(name);
+							index = BookItemService.testBookItem(name);
 							
 							if (index == -1) {
-								System.out.println(Strings.NOTFOUND);
+								System.out.println(Constant.NOTFOUND);
 							}
 						} while (index == -1);
 
 						if (!name.equals("0")) {
 
 							
-							details = productService.displayBookDetail(index);
+							details = BookItemService.displayBookDetail(index);
 							System.out.println(details);
 
 							
 							while (true) {
 
-								System.out.print(Strings.ADDTOCART);
+								System.out.print(Constant.ADDTOCART);
 								cart = sc.next().toLowerCase();
 								
-								if (cart.equals(Strings.YES) || cart.equals(Strings.NO)) {
+								if (cart.equals(Constant.YES) || cart.equals(Constant.NO)) {
 									break;
 								} else {
-									System.out.println(Strings.INVALIDOPTION);
+									System.out.println(Constant.INVALIDOPTION);
 								}
 							}
 
-							if (cart.equals(Strings.YES)) {
+							if (cart.equals(Constant.YES)) {
 								addtoCart(index);
 							} else {
 								
 								while (true) {
-									System.out.print("\n" + Strings.CHECKOUT);
+									System.out.print("\n" + Constant.CHECKOUT);
 									input = sc.next().toLowerCase();
 
-									if (!input.equals(Strings.CHECK) && !input.equals(Strings.BACK)) {
-										System.out.println(Strings.INVALIDOPTION);
+									if (!input.equals(Constant.CHECK) && !input.equals(Constant.BACK)) {
+										System.out.println(Constant.INVALIDOPTION);
 									} else {
 										break;
 									}
 								}
 								
-								if (input.equals(Strings.CHECK)) {
+								if (input.equals(Constant.CHECK)) {
 									checkOut();
 									break;
-								} else if (input.equals(Strings.BACK)) {
+								} else if (input.equals(Constant.BACK)) {
 									break;
 								}
 							}
@@ -181,7 +182,7 @@ public class Activator implements BundleActivator {
 
 					case 3:
 						
-						System.out.println("\n" + cartService.printCartSummary());
+						System.out.println("\n" + addToCartService.printCartDetails());
 						break;
 
 				
@@ -189,26 +190,26 @@ public class Activator implements BundleActivator {
 						
 						while (true) {
 							// Print the Cart Summary
-							System.out.println("\n" + cartService.printCartSummary());
+							System.out.println("\n" + addToCartService.printCartDetails());
 
 							// Checks if the cart is empty
-							if (cartService.getCartCount() == 0) {
+							if (addToCartService.getAddToCartCount() == 0) {
 								break;
 							}
 							while (true) {
 								try {
-									System.out.print(Strings.REMOVEPNUM);
+									System.out.print(Constant.REMOVEPNUM);
 									index = sc.nextInt();
 									// Checks if the input is valid
-									if (index < 0 || index > cartService.getCartCount()) {
-										System.out.println(Strings.INVALIDOPTION);
+									if (index < 0 || index > addToCartService.getAddToCartCount()) {
+										System.out.println(Constant.INVALIDOPTION);
 									} else {
 										break;
 									}
 
 									// Catches the exception that will be thrown if a String is entered
 								} catch (InputMismatchException e) {
-									System.out.println(Strings.INVALIDOPTION);
+									System.out.println(Constant.INVALIDOPTION);
 									sc.next();
 								}
 							}
@@ -220,33 +221,33 @@ public class Activator implements BundleActivator {
 							index = index - 1;
 							// Loop until a valid input is entered
 							while (true) {
-								System.out.print("Do you want to remove " + cartService.getProductName(index)
+								System.out.print("Do you want to remove " + addToCartService.getBookIteName(index)
 										+ " from the cart ? (y/n) : ");
 								input = sc.next();
-								if (input.toLowerCase().equals(Strings.YES) || input.toLowerCase().equals(Strings.NO)) {
+								if (input.toLowerCase().equals(Constant.YES) || input.toLowerCase().equals(Constant.NO)) {
 									break;
 								}
-								System.out.println(Strings.INVALIDOPTION);
+								System.out.println(Constant.INVALIDOPTION);
 							}
 							// Checks if user needs to remove more products
-							if (input.toLowerCase().equals(Strings.YES)) {
+							if (input.toLowerCase().equals(Constant.YES)) {
 								// Checks if the removal is successful
-								if (cartService.removeProduct(index)) {
-									System.out.println(Strings.REMOVESUCCESS);
+								if (addToCartService.removeBookItem(index)) {
+									System.out.println(Constant.REMOVESUCCESS);
 								} else {
-									System.out.println(Strings.REMOVEFAIL);
+									System.out.println(Constant.REMOVEFAIL);
 								}
 								// Loop until a valid input is entered
 								while (true) {
-									System.out.print(Strings.REMOVEMORE);
+									System.out.print(Constant.REMOVEMORE);
 									input = sc.next();
-									if (input.toLowerCase().equals(Strings.YES) || input.toLowerCase().equals(Strings.NO)) {
+									if (input.toLowerCase().equals(Constant.YES) || input.toLowerCase().equals(Constant.NO)) {
 										break;
 									}
-									System.out.println(Strings.INVALIDOPTION);
+									System.out.println(Constant.INVALIDOPTION);
 								}
 								// Check if user wants to remove more products
-								if (input.toLowerCase().equals(Strings.NO)) {
+								if (input.toLowerCase().equals(Constant.NO)) {
 									break;
 								}
 							}
@@ -255,24 +256,24 @@ public class Activator implements BundleActivator {
 					// Clears the cart
 					case 5:
 						// Prints the cart summary
-						System.out.println("\n" + cartService.printCartSummary());
+						System.out.println("\n" + addToCartService.printCartDetails());
 						// Check if cart is not empty
-						if (cartService.getCartCount() > 0) {
+						if (addToCartService.getAddToCartCount() > 0) {
 							// Loop until a valid input is entered
 							while (true) {
-								System.out.print(Strings.EMPTYCART);
+								System.out.print(Constant.EMPTYCART);
 								input = sc.next().toLowerCase();
-								if (input.equals(Strings.YES) || input.equals(Strings.NO)) {
+								if (input.equals(Constant.YES) || input.equals(Constant.NO)) {
 									break;
 								}
-								System.out.println(Strings.INVALIDOPTION);
+								System.out.println(Constant.INVALIDOPTION);
 							}
 							// Check if user needs to clear the cart
-							if (input.equals(Strings.YES)) {
-								if (cartService.clearCart()) {
-									System.out.println(Strings.EMPTYCARTSUCCESS);
+							if (input.equals(Constant.YES)) {
+								if (addToCartService.clearAddToCart()) {
+									System.out.println(Constant.EMPTYCARTSUCCESS);
 								} else {
-									System.out.println(Strings.EMPTYCARTFAIL);
+									System.out.println(Constant.EMPTYCARTFAIL);
 								}
 							}
 						}
@@ -283,19 +284,19 @@ public class Activator implements BundleActivator {
 						break;
 					// Exit
 					case 7:
-						System.out.println(Strings.THANKYOU);
+						System.out.println(Constant.THANKYOU);
 						break;
 					default:
-						System.out.println("\n" + Strings.INVALIDOPTION);
+						System.out.println("\n" + Constant.INVALIDOPTION);
 					}
 
 				} while (option != 7);
 	}
 
 	public void stop(BundleContext context) throws Exception {
-		System.out.println(Strings.GOODBYE);
-		context.ungetService(serviceReferenceProduct);
-		context.ungetService(serviceReferenceCart);
+		System.out.println(Constant.GOODBYE);
+		context.ungetService(serviceReferenceBookItem);
+		context.ungetService(serviceReferenceAddToCart);
 		context.ungetService(serviceReferenceOrder);
 	}
 	
@@ -305,24 +306,24 @@ public class Activator implements BundleActivator {
 		double price;
 
 		
-		String name = productService.getBookItemName(index);
+		String name = BookItemService.getBookItemName(index);
 		
-		availQty = productService.getQty(index);
+		availQty = BookItemService.getQty(index);
 		
-		price = productService.getBookPrice(index);
-
+		price = BookItemService.getBookPrice(index);
+            
 		while (true) {
 			try {
-				System.out.print(Strings.ENTERQTY);
+				System.out.print(Constant.ENTERQTY);
 				qty = sc.nextDouble();
 				if (qty > 0) {
 					break;
 				} else {
-					System.out.println(Strings.INVALIDOPTION);
+					System.out.println(Constant.INVALIDOPTION);
 				}
 				// Catches the exception that will be thrown if a String is entered
 			} catch (InputMismatchException e) {
-				System.out.println(Strings.INVALIDOPTION);
+				System.out.println(Constant.INVALIDOPTION);
 				sc.next();
 			}
 		}
@@ -330,18 +331,18 @@ public class Activator implements BundleActivator {
 		// Checks whether the required quantity is less than the available quantity
 		if (qty > 0 && qty <= availQty) {
 			// Checks if the product is added to the cart successfully
-			if (cartService.addtoCart(name, name, qty, name, price, availQty)) {
-				System.out.println(qty + " kgs of " + name + Strings.SUCCESSFULLYADDED);
+			if (addToCartService.addtoCart(name, name, qty, name, price, availQty)) {
+				System.out.println(qty + " kgs of " + name + Constant.SUCCESSFULLYADDED);
 			} else {
-				System.out.println(Strings.NOTAVAILABLE + "Only " + availQty + "kgs are available.");
+				System.out.println(Constant.NOTAVAILABLE + "Only " + availQty + "kgs are available.");
 			}
 
 		} else {
-			System.out.println(Strings.NOTAVAILABLE + " Only " + availQty + "kgs are available.");
+			System.out.println(Constant.NOTAVAILABLE + " Only " + availQty + "kgs are available.");
 		}
 
 	}
-
+    
 	/**
 	 * Checkout the customer and places the order
 	 */
@@ -350,47 +351,47 @@ public class Activator implements BundleActivator {
 		String orderConfirm, cname, address, city, contact;
 		
 		// Prints the cart summary
-		System.out.println("\n" + cartService.printCartSummary());
+		System.out.println("\n" + addToCartService.printCartDetails());
 
 		// Checks if the cart is empty
-		if (cartService.getCartCount() != 0) {
+		if (addToCartService.getAddToCartCount() != 0) {
 
 			
 			/// Loops until a valid input is entered
 			while (true) {
-				System.out.print(Strings.CONFIRMORCANCEL);
+				System.out.print(Constant.CONFIRMORCANCEL);
 				orderConfirm = sc.next();
-				if (!orderConfirm.toLowerCase().equals(Strings.CONFIRM)
-						&& !orderConfirm.toLowerCase().equals(Strings.BACK)) {
-					System.out.println(Strings.INVALIDOPTION);
+				if (!orderConfirm.toLowerCase().equals(Constant.CONFIRM)
+						&& !orderConfirm.toLowerCase().equals(Constant.BACK)) {
+					System.out.println(Constant.INVALIDOPTION);
 				} else {
 					break;
 				}
 			}
 			// Checks if user confirms
-			if (orderConfirm.toLowerCase().equals(Strings.CONFIRM)) {
+			if (orderConfirm.toLowerCase().equals(Constant.CONFIRM)) {
 				// Requests to enter the customer details
-				System.out.println(Strings.ENTERNAME);
+				System.out.println(Constant.ENTERNAME);
 				cname = sc.next();
-				System.out.println(Strings.ENTERCONTACT);
+				System.out.println(Constant.ENTERCONTACT);
 				contact = sc.next();
-				System.out.println(Strings.ENTERADDRESS);
+				System.out.println(Constant.ENTERADDRESS);
 				sc.nextLine();
 				address = sc.nextLine();
-				System.out.println(Strings.ENTERCITY);
+				System.out.println(Constant.ENTERCITY);
 				city = sc.next();
-				double total = cartService.getCartTotal();
+				double total = addToCartService.getCartTotal();
 
 				// Checks is the order confirmation is successful
-				if (orderService.confirmCustomerOrder(cartService.getCart(), new Customer(cname, contact, address), total)) {
+				if (CusOrderService.confirmCustomerOrder(addToCartService.getCart(), new Customer(cname, contact, address), total)) {
 					System.out.println(
-							Strings.ORDERSUCCESS + "Please keep Rs." + total + " ready at the time of delivery.");
+							Constant.ORDERSUCCESS + "Please keep Rs." + total + " ready at the time of delivery.");
 					// Reduces the available quantity of the products
-					productService.decreaseQty(cartService.getCart());
+					BookItemService.decreaseQty(addToCartService.getCart());
 					// Clears the cart
-					cartService.clearCart();
+					addToCartService.clearAddToCart();
 				} else {
-					System.out.println(Strings.ORDERFAIL);
+					System.out.println(Constant.ORDERFAIL);
 				}
 
 			}

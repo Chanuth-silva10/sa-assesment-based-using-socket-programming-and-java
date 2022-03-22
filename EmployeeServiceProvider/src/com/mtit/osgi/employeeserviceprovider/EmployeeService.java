@@ -9,20 +9,17 @@ public interface EmployeeService {
 	 public int searchEmployee(String name);
 	 	
 	 	
-	 public String displayBookDetail(int index);
+	 public String displayEmployeeDetail(int index);
 	 	
 	 	
 	 public String displayAllEmployees();
 	 	
 	 	
-	 public double getBookPrice(int index);
+	 public boolean addEmployee(Employee p);
 	 	
 	 	
-	 public boolean addBookItem(Employee p);
-	 	
-	 	
-	 public boolean deleteBookItem(int index);
-
+	 public boolean deleteEmployee(int index);
+     
 	 	
 	 public String getEmployeeName(int index);
 	 
@@ -49,4 +46,10 @@ public interface EmployeeService {
 	 
 	 
 	 public int getEmployeeCount();
+	 
+	 
+	 public boolean addSlary(String eName,String eDesignation,int age, double eBasicSalary,int otHrs,double otRate,double eNetSalary);
+	 
+	 
+	 public  String displayAllEmployeeSalaryDetails();
 }

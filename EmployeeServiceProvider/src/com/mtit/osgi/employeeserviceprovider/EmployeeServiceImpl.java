@@ -12,12 +12,14 @@ public class EmployeeServiceImpl implements EmployeeService{
 	private List<Employee> employees = new ArrayList<Employee>() {
 		{
 			add(new Employee("Chanuth","StockKeeper", 21, 15000));
-			add(new Employee("Imasha","Cashier", 21, 25000));
-			add(new Employee("Hasitha","driver", 18, 15000));
-			add(new Employee("OKG","StockKeeper", 11, 15000));
+			add(new Employee("Imasha ","Cashier    ", 21, 25000));
+			add(new Employee("Hasitha","driver     ", 18, 15000));
+			add(new Employee("OKG    ","StockKeeper", 11, 15000));
 			
 		}
 	};
+	
+	public static  List<EmployeeSalary> empSalaryReceipt = new ArrayList<>();
 
 	@Override
 	public int searchEmployee(String eName) {
@@ -36,7 +38,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	@Override
-	public String displayBookDetail(int index) {
+	public String displayEmployeeDetail(int index) {
 		return  "   Employee ID : " + index + 1 + "\n"+
 				"   Employee Name : " + employees.get(index).geteName() + "\n"+
 				"   Employee Desination : " + employees.get(index).getEdesination() + "\n"+
@@ -61,21 +63,16 @@ public class EmployeeServiceImpl implements EmployeeService{
 		return employeeDetails;
 	}
     
+	
 	@Override
-	public double getBookPrice(int index) {
-		return employees.get(index).geteSalary();
-		
-	}
-
-	@Override
-	public boolean addBookItem(Employee employee) {
+	public boolean addEmployee(Employee employee) {
 		employees.add(employee);
 		return true;
 	}
 
 
 	@Override
-	public boolean deleteBookItem(int i) {
+	public boolean deleteEmployee(int i) {
 		employees.remove(i);
 		return true;
 	}
@@ -126,6 +123,38 @@ public class EmployeeServiceImpl implements EmployeeService{
 		employees.get(index).seteSalary(salary);
 		return true;
 	}
+
+	@Override
+	public boolean addSlary(String eName, String eDesignation, int age, double eBasicSalary, int otHrs, double otRate,
+			double eNetSalary) {
+		
+		EmployeeSalary e1 = new EmployeeSalary(eName, eDesignation, age, eBasicSalary, otHrs, otRate, eNetSalary);
+		
+		if (e1 != null) {
+			empSalaryReceipt.add(e1);
+		} else {
+		    return false;
+		}
+		
+		return true;
+		
+	}
+	
+	 public  String displayAllEmployeeSalaryDetails() {
+	        String employeeSalaryDetails = "";
+			
+			if (empSalaryReceipt.size() > 0) {
+				int bCount = 1;
+				for (EmployeeSalary eSalary : empSalaryReceipt) {
+					employeeSalaryDetails += bCount + "    " + eSalary.geteName() + "\t" + eSalary.getEdesination() + "\t" + "Rs."
+							+ eSalary.geteSalary() +"\t"+ eSalary.getOtHrs()+ "\t" + eSalary.getOtRate() +"\t"+ eSalary.getNetSalary()+ "\n";
+					bCount++;
+				}
+			} else {
+				employeeSalaryDetails = "Not registered Employee Salary Details!";
+			}
+			return employeeSalaryDetails;
+		}
 
 	
 	

@@ -118,7 +118,7 @@ public class Activator implements BundleActivator {
 						break;
 					}
 					index = employeeSalaryService.searchEmployee(eName);
-					details = employeeSalaryService.displayBookDetail(index);
+					details = employeeSalaryService.displayEmployeeDetail(index);
 					System.out.println(details);
 					if (index == -1) {
 						System.out.println("Not found Employee. ");
@@ -129,7 +129,7 @@ public class Activator implements BundleActivator {
 				
 			case 3:
 				System.out.println("\n ----- ALL Employee ------");
-				System.out.println(EmployeeSalary.displayAllEmployeeSalaryDetails());
+				System.out.println(employeeSalaryService.displayAllEmployeeSalaryDetails());
 				
 
 				
@@ -168,9 +168,9 @@ public class Activator implements BundleActivator {
 	}
 	
 	public void addEmployeeSalary(int index) {
-		double eBasicSalary, eNetSalary;
+		double eBasicSalary, eNetSalary, otRate;
 		String eName, eDesignation, answer;
-		int otHrs, age, otRate, checkAddSalary = 0;
+		int otHrs, age, checkAddSalary = 0;
 
 		
 		eName =  employeeSalaryService.getEmployeeName(index);
@@ -187,15 +187,15 @@ public class Activator implements BundleActivator {
 				System.out.print("Enter Ot Hourse : ");
 				otHrs = sc.nextInt();
 				System.out.print("Enter Ot Rate(%) : ");
-				otRate = sc.nextInt();
+				otRate = sc.nextDouble();
 				
 				if (otHrs > 1) {
 					eNetSalary = eBasicSalary + (otHrs * otRate);
 					System.out.println(eName + "  basic salry is "+eBasicSalary+  " and new  Salary updayed as a " + eNetSalary);
 					
-					EmployeeSalary e1 = new EmployeeSalary(eName, eDesignation, age, eNetSalary, otHrs, otRate, eNetSalary);
 					
-					if(EmployeeSalary.addSlary(e1)) {
+					
+					if(employeeSalaryService.addSlary(eName, eDesignation, age, eBasicSalary, otHrs, otRate, eNetSalary)) {
 						System.out.println("Employee Salary Added and Pay.");
 						checkAddSalary = 1;
 					} else {

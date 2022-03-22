@@ -9,7 +9,7 @@ import org.osgi.framework.ServiceReference;
 
 import com.mtit.osgi.itemserviceprovider.BookItemService;
 import com.mtit.osgi.itemserviceprovider.Item;
-import com.mtit.osgi.orderservicepublisher.OrderService;
+import com.mtit.osgi.orderservicepublisher.CusOrderService;
 
 
 public class Activator implements BundleActivator {
@@ -23,8 +23,8 @@ public class Activator implements BundleActivator {
 		serviceReferenceItem = Context.getServiceReference(BookItemService.class.getName());
 		BookItemService bookItemService = (BookItemService)Context.getService(serviceReferenceItem);
 		
-		serviceReferenceOrder = Context.getServiceReference(OrderService.class.getName());
-		OrderService orderService = (OrderService)Context.getService(serviceReferenceOrder);
+		serviceReferenceOrder = Context.getServiceReference(CusOrderService.class.getName());
+		CusOrderService orderService = (CusOrderService)Context.getService(serviceReferenceOrder);
 		
 		
 		int nValue, iQty, itemIndex, eAnswer;
