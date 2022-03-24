@@ -301,21 +301,27 @@ public class Activator implements BundleActivator {
 	}
 	
 	public void addtoCart(int index) {
-		double qty;
-		double availQty;
+		int qty,availQty;
 		double price;
+		String name, desc,category;
 
 		
-		String name = BookItemService.getBookItemName(index);
+		name = BookItemService.getBookItemName(index);
+		
+		desc = BookItemService.getDesc(index);
+		
+		category = BookItemService.getCaategory(index);
 		
 		availQty = BookItemService.getQty(index);
 		
 		price = BookItemService.getBookPrice(index);
+		
+		
             
 		while (true) {
 			try {
 				System.out.print(Constant.ENTERQTY);
-				qty = sc.nextDouble();
+				qty = sc.nextInt();
 				if (qty > 0) {
 					break;
 				} else {
@@ -331,14 +337,14 @@ public class Activator implements BundleActivator {
 		// Checks whether the required quantity is less than the available quantity
 		if (qty > 0 && qty <= availQty) {
 			// Checks if the product is added to the cart successfully
-			if (addToCartService.addtoCart(name, name, qty, name, price, availQty)) {
-				System.out.println(qty + " kgs of " + name + Constant.SUCCESSFULLYADDED);
+			if (addToCartService.addtoCart(name, desc, qty, category, price, availQty)) {
+				System.out.println(qty + "  of " + name + Constant.SUCCESSFULLYADDED);
 			} else {
-				System.out.println(Constant.NOTAVAILABLE + "Only " + availQty + "kgs are available.");
+				System.out.println(Constant.NOTAVAILABLE + "Only " + availQty + "item are available.");
 			}
 
 		} else {
-			System.out.println(Constant.NOTAVAILABLE + " Only " + availQty + "kgs are available.");
+			System.out.println(Constant.NOTAVAILABLE + " Only " + availQty + "items are available.");
 		}
 
 	}

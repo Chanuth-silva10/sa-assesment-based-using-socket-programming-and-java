@@ -36,7 +36,7 @@ public class Activator implements BundleActivator {
 		do {
 			
 			System.out.println("\n" + "WELCOME IMASHA");
-			System.out.println("\n" + "----- MERCHANT PORTAL -----");
+			System.out.println("\n" + "----- MERCHANT PORTAL -----"+"\n");
 			System.out.println("1) DISPLAY all BOOK ITEMS");
 			System.out.println("2) DISPLAY all CUSTOMER ORDER");
 			System.out.println("3) INSERT BOOK ITEM ");
@@ -61,6 +61,7 @@ public class Activator implements BundleActivator {
 			}
 			
 			if (nValue == 1) {
+				//System.out.println("ID|\t|BookItem\t|Qty\t|Price\t\t|Category\t\t|describe\n");
 				System.out.println(bookItemService.displayAllBookItems());
 			} else if (nValue == 2) {
 				System.out.println(orderService.displayCustomerOrders());
@@ -258,7 +259,7 @@ public class Activator implements BundleActivator {
 							sc.nextLine();
 							iDesc = sc.nextLine();
 							
-							if (bookItemService.editBookName(itemIndex, iDesc)) {
+							if (bookItemService.editBookDesc(itemIndex, iDesc)) {
 								System.out.println("Book item description update successfully!. ");
 							} else {
 								System.out.println("Book item description update unSuccessfully!. ");
@@ -295,14 +296,14 @@ public class Activator implements BundleActivator {
 							
                         case 4:
 							
-							System.out.print("Enter book item description : ");
+							System.out.print("Enter book Category : ");
 							sc.nextLine();
 							iDesc = sc.nextLine();
 							
-							if (bookItemService.editBookName(itemIndex, iDesc)) {
-								System.out.println("Book item description update successfully!. ");
+							if (bookItemService.editBookCategory(itemIndex, iDesc)) {
+								System.out.println("Book item Catgory update successfully!. ");
 							} else {
-								System.out.println("Book item description update unSuccessfully!. ");
+								System.out.println("Book item Category update unSuccessfully!. ");
 							}
 							break;
 							

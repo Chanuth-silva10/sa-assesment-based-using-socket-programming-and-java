@@ -16,7 +16,13 @@ public interface BookItemService {
  	public String displayAllBookItems();
  	
  	
- 	public double getQty(int index);
+ 	public int getQty(int index);
+ 	
+ 	
+ 	public String getDesc(int index);
+ 	
+ 	
+ 	public String getCaategory(int index);
  	
  	
  	public boolean decreaseQty(List<Item> orderedProducts);
@@ -40,7 +46,7 @@ public interface BookItemService {
  	public boolean editBookName(int index, String name);
  	
  	
- 	public boolean editBookQty(int index, double qty);
+ 	public boolean editBookQty(int index, int qty);
  	
  	
  	public boolean editBookPrice(int index, double price);

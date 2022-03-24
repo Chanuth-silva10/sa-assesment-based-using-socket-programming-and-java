@@ -19,12 +19,12 @@ public class Constant {
 	public static final String ADDMORE = "Do you need to add more Book Items ? (y/n) ";
 	public static final String CHECKOUT = "Please type 'check' to Buy or 'back' to go back to the main menu : ";
 	public static final String SEARCHPRODUCT = "Please Enter the Book Item name to search or enter '0' to go back to the main menu: ";
-	public static final String NOTFOUND = "Bokk Item Not found";
+	public static final String NOTFOUND = "Book Item Not found";
 	public static final String ADDTOCART = "Do you want to add this Book Item to the Add To Cart ? (y/n) : ";
 	public static final String THANKYOU = "Thank you! Hope to see you again";
-	public static final String ENTERQTY = "Please enter the qty in kgs : ";
+	public static final String ENTERQTY = "Please enter the qty : ";
 	public static final String SUCCESSFULLYADDED = " has been successfully added to the Add To Cart";
-	public static final String NOTAVAILABLE = "This Bokk Item out of Quantity.";
+	public static final String NOTAVAILABLE = "This Book Item out of Quantity.";
 	public static final String CONFIRMORCANCEL = "Type 'confirm' to proceed with Buy or 'back' to go back to the main menu : ";
 	public static final String ENTERNAME = " Please Enter your name : ";
 	public static final String ENTERCONTACT = "Please Enter your Phone No : ";

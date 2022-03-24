@@ -10,14 +10,14 @@ public class Activator implements BundleActivator {
 
 	public void start(BundleContext Context) throws Exception {
 		
-		System.out.println("Publisher Starter");
+		System.out.println("Book Item Publisher Starter");
 		BookItemService publishBookService = new BookItemServiceImpl();
 		publishServiceRegistration = Context.registerService(BookItemService.class.getName(),publishBookService , null);
 		
 	}
 
 	public void stop(BundleContext Context) throws Exception {
-		System.out.println("Publisher stop.");
+		System.out.println("Book Item Publisher stop.");
 		publishServiceRegistration.unregister();
 	}
 

@@ -5,9 +5,9 @@ import java.util.List;
 
 
 public class EmployeeSalary extends Employee{
-	int otHrs;
-    double otRate;
-    double netSalary;
+	public int otHrs;
+    public double otRate;
+    public double netSalary;
     
 	public static List<EmployeeSalary> empSalaryReceipt = new ArrayList<>();
 

@@ -3,13 +3,13 @@ package com.mtit.osgi.itemserviceprovider;
 public class Item {
      private String bName;
      private String bDesc; 
-	 private double bQty;
+	 private int bQty;
 	 private String bCategory;
      private double bPrice;
      
     
  
-	public Item(String bName, String bDesc, double bQty, String bCategory, double bPrice) {
+	public Item(String bName, String bDesc, int bQty, String bCategory, double bPrice) {
 		super();
 		this.bName = bName;
 		this.bDesc = bDesc;
@@ -43,13 +43,13 @@ public class Item {
 
 
 
-	public double getbQty() {
+	public int getbQty() {
 		return bQty;
 	}
 
 
 
-	public void setbQty(double bQty) {
+	public void setbQty(int bQty) {
 		this.bQty = bQty;
 	}
 

@@ -17,7 +17,7 @@ public class AddToCartServiceImpl implements AddToCartService {
 
 	
 	@Override
-	public boolean addtoCart(String bName, String bDesc, double bQty, String bCategory, double bPrice,double availBookQty) {
+	public boolean addtoCart(String bName, String bDesc, int bQty, String bCategory, double bPrice,int availBookQty) {
 
 		
 		int index = checkAddToCart(bName);
@@ -25,7 +25,7 @@ public class AddToCartServiceImpl implements AddToCartService {
 		if (index == -1) {
 			cart.add(new Item(bName, bDesc, bQty, bCategory, bPrice));
 		} else {
-			double newQty = cart.get(index).getbQty() + bQty;
+			int newQty = cart.get(index).getbQty() + bQty;
 
 			if (newQty <= availBookQty) {
 				cart.get(index).setbQty(newQty);

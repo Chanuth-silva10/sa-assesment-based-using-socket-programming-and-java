@@ -64,7 +64,7 @@ public class BookItemServiceImpl implements BookItemService{
 	}
 
 	@Override
-	public double getQty(int i) {
+	public int getQty(int i) {
 		
 		return items.get(i).getbQty();
 		
@@ -122,7 +122,7 @@ public class BookItemServiceImpl implements BookItemService{
 	}
 
 	@Override
-	public boolean editBookQty(int index, double qty) {
+	public boolean editBookQty(int index, int qty) {
 		items.get(index).setbQty(qty);
 		return true;
 	}
@@ -141,6 +141,17 @@ public class BookItemServiceImpl implements BookItemService{
 	public boolean editBookDesc(int index, String desc) {
 		items.get(index).setbDesc(desc);;
 		return true;
+	}
+
+	@Override
+	public String getDesc(int index) {
+		return items.get(index).getbDesc();	
+	}
+
+	@Override
+	public String getCaategory(int index) {
+		return items.get(index).getbCategory();
+		
 	}
 
 }
